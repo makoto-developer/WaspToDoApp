@@ -3,6 +3,8 @@ import React from 'react'
 import {useQuery} from '@wasp/queries'
 import getTasks from '@wasp/queries/getTasks'
 import createTask from '@wasp/actions/createTask'
+import updateTask from '@wasp/actions/updateTask'
+
 
 const MainPage = () => {
   const { data: tasks, isFetching, error } = useQuery(getTasks)
@@ -20,11 +22,24 @@ const MainPage = () => {
 }
 
 const Task = (props) => {
+  const handleIsDoneChange = async (event) => {
+    try {
+      await updateTask({
+        taskId: props.task.id,
+        data: { isDone: event.target.checked }
+      })
+    } catch (error) {
+      window.alert('Error while updating task: ' + error.message)
+    }
+  }
+
   return (
       <div>
         <input
-            type='checkbox' id={props.task.id}
-            checked={props.task.isDone} readonly
+            type='checkbox'
+            id={props.task.id}
+            checked={props.task.isDone}
+            onChange={handleIsDoneChange}
         />
         {props.task.description}
       </div>
