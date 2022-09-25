@@ -11,15 +11,40 @@
 
 ```shell
 git clone git@github.com:makoto-developer/WaspToDoApp.git
+cd WaspToDoApp
+```
+
+`wasp`を導入
+
+```shell
+curl -sSL https://get.wasp-lang.dev/installer.sh | sh
+
+# トラブルシューティング
+## waspコマンドが実行できない
+## macOSでPATHが通っていないケースがあるため、もしwaspコマンドが叩けない場合は環境変数を追加する
+vi ~/.zshrc
+
+# 追記する
+export PATH=$PATH:/Users/user/.local/bin
+```
+
+環境変数を設定
+
+```shell
+# デフォルトではtelemetryが12時間ごとに2回送信されるため、送らないように設定する。
+vi ~/.zshrc
+
+# 追記する
+export WASP_TELEMETRY_DISABLE=1
 ```
 
 PostgreSQLサーバを起動
 
 ```shell
-# docker-compose.ymlがあるディレクトリへ移動
+# `docker-compose.yml`があるディレクトリへ移動
 cd docker/postgresql
 
-# .envファイルを用意して適宜修正する。その場合プロジェクトルートにある.envファイルの合わせて修正すること。
+# `.env`ファイルを用意して適宜修正する。その場合プロジェクトルートにある`.env`ファイルの`DATABASE_URL`も合わせて修正すること。
 cp -p .env.example .env
 vi .env
 
