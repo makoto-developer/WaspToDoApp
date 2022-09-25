@@ -24,6 +24,7 @@ entity Task {=psl
     isDone      Boolean @default(false)
     user        User?    @relation(fields: [userId], references: [id])
     userId      Int?
+    deleted     Boolean @default(false)
 psl=}
 
 query getTasks {
@@ -42,6 +43,11 @@ action createTask {
 
 action updateTask {
   fn: import { updateTask } from "@ext/actions.js",
+  entities: [Task]
+}
+
+action deleteTask {
+  fn: import { deleteTask } from "@ext/actions.js",
   entities: [Task]
 }
 

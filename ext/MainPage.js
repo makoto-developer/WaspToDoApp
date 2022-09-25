@@ -4,6 +4,7 @@ import {useQuery} from '@wasp/queries'
 import getTasks from '@wasp/queries/getTasks'
 import createTask from '@wasp/actions/createTask'
 import updateTask from '@wasp/actions/updateTask'
+import deleteTask from '@wasp/actions/deleteTask'
 import logout from '@wasp/auth/logout.js'
 
 
@@ -22,6 +23,10 @@ const MainPage = ({ user }) => {
 }
 
 const Task = (props) => {
+  if (props.task.deleted) {
+    return <></>
+  }
+
   const handleIsDoneChange = async (event) => {
     try {
       await updateTask({
@@ -33,15 +38,32 @@ const Task = (props) => {
     }
   }
 
+  const handleClickDeleted = async (event) => {
+    try {
+      await deleteTask({
+        taskId: props.task.id,
+      })
+    } catch (error) {
+      window.alert('Error while deleting task: ' + error.message)
+    }
+  }
+
   return (
       <div>
+        {props.task.description}
+        done:
         <input
             type='checkbox'
             id={props.task.id}
             checked={props.task.isDone}
             onChange={handleIsDoneChange}
         />
-        {props.task.description}
+        deleted:
+        <input
+            type='checkbox'
+            id={props.task.id}
+            onChange={handleClickDeleted}
+        />
       </div>
   )
 }
