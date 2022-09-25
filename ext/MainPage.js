@@ -4,9 +4,10 @@ import {useQuery} from '@wasp/queries'
 import getTasks from '@wasp/queries/getTasks'
 import createTask from '@wasp/actions/createTask'
 import updateTask from '@wasp/actions/updateTask'
+import logout from '@wasp/auth/logout.js'
 
 
-const MainPage = () => {
+const MainPage = ({ user }) => {
   const { data: tasks, isFetching, error } = useQuery(getTasks)
 
   return (
@@ -17,6 +18,8 @@ const MainPage = () => {
 
         {isFetching && 'Fetching...'}
         {error && 'Error: ' + error}
+
+        <button onClick={logout}> Logout </button>
       </div>
   )
 }
