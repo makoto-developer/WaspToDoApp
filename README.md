@@ -21,3 +21,6 @@ dbの内容を確認する
 ```shell
 wasp db studio
 ```
+
+## Note
+
