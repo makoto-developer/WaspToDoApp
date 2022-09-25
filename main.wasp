@@ -8,7 +8,10 @@ app WaspToDoApp {
   },
   dependencies: [
     ("react-clock", "3.0.0")
-  ]
+  ],
+  db: {
+    system: PostgreSQL
+  }
 }
 
 route RootRoute { path: "/", to: MainPage }
