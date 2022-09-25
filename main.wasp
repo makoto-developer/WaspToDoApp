@@ -6,9 +6,7 @@ app WaspToDoApp {
     methods: [ EmailAndPassword ], // More methods coming soon!
     onAuthFailedRedirectTo: "/login" // We'll see how this is used a bit later
   },
-  dependencies: [
-    ("react-clock", "3.0.0")
-  ],
+  dependencies: [],
   db: {
     system: PostgreSQL
   }

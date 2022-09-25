@@ -5,7 +5,6 @@ import getTasks from '@wasp/queries/getTasks'
 import createTask from '@wasp/actions/createTask'
 import updateTask from '@wasp/actions/updateTask'
 import logout from '@wasp/auth/logout.js'
-import Clocks from './Clocks'
 
 
 const MainPage = ({ user }) => {
@@ -14,14 +13,9 @@ const MainPage = ({ user }) => {
   return (
       <div>
         <NewTaskForm />
-        <div> <Clocks /> </div>
-
-
         {tasks && <TasksList tasks={tasks} />}
-
-        {isFetching && 'Fetching...'}
+        {isFetching && 'todo list Fetching...'}
         {error && 'Error: ' + error}
-
         <button onClick={logout}> Logout </button>
       </div>
   )
