@@ -1,5 +1,6 @@
 .env
 .env.*
+!.env.example
 !.env.*.local
 db_data
 admin_data

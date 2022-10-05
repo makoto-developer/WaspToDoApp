@@ -1,4 +1,6 @@
 .wasp/
 .env
-
+.env.*
+!.env.example
+!.env.*.local
 Memo.md

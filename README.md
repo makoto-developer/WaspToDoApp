@@ -10,8 +10,8 @@
 クローン
 
 ```shell
-git clone git@github.com:makoto-developer/WaspToDoApp.git
-cd WaspToDoApp
+git clone git@github.com:makoto-developer/haskell_wasp_todo_app.git
+cd haskell_wasp_todo_app
 ```
 
 `wasp`を導入
@@ -91,8 +91,8 @@ wasp db studio
 [こちら](https://wasp-lang.dev/docs/language/features#migrating-from-sqlite-to-postgresql)を見ながら作業
 
 ```shell
-wasp new WaspToDoApp
-cd WaspToDoApp
+wasp new haskell_wasp_todo_app
+cd haskell_wasp_todo_app
 wasp start
 ```
 
